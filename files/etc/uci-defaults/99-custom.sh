@@ -49,7 +49,13 @@ elif [ "$count" -gt 1 ]; then
    # 提取第一个接口作为WAN
    uci set network.wan.device="$wan_ifname"
    # WAN接口默认DHCP
-   uci set network.wan.proto='dhcp'
+   # uci set network.wan.proto='dhcp'
+   # WAN接口设置静态IP
+   uci set network.wan.proto='static'
+   uci set network.wan.ipaddr='112.16.210.253'
+   uci set network.wan.netmask='255.255.255.0'
+   uci set networkwlan.gateway='112.16.210.1'
+   uci set network.wan.dns='211.140.13.188 211.140.188.188'
    # 设置WAN6绑定网口eth0
    uci set network.wan6=interface
    uci set network.wan6.device="$wan_ifname"
